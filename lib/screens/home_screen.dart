@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:settings_config_app/providers/theme_provier.dart';
+import 'package:settings_config_app/providers/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -8,6 +8,9 @@ class HomeScreen extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
+      backgroundColor: themeProvider.themeMode == ThemeMode.dark
+          ? Colors.black
+          : Colors.white,
       appBar: AppBar(
         title: Text(
           'Dark Mode Toggle',
@@ -18,7 +21,17 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Center(
         child: SwitchListTile(
-          title: Text('Enable Dark Mode'),
+          activeColor: Colors.red,
+          inactiveTrackColor: Colors.white,
+          inactiveThumbColor: Colors.black,
+          title: Text(
+            'Enable Dark Mode',
+            style: TextStyle(
+                fontSize: 20,
+                color: themeProvider.themeMode == ThemeMode.dark
+                    ? Colors.white
+                    : Colors.black),
+          ),
           value: themeProvider.themeMode == ThemeMode.dark,
           onChanged: (value) {
             themeProvider.toggleTheme(value);
