@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="settings_config_app"
+        android:usesCleartextTraffic="true"
+        android:label="Config App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
